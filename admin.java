@@ -107,29 +107,43 @@ public class admin extends JFrame {  // Declares the Admin window class and inhe
         getContentPane().removeAll();                                             // Removes existing components before building the next screen.
 
         setTitle("Library Management System - Admin Login");                      // Sets the title displayed in the window title bar.
-        setSize(380, 280);                                                        // Sets the window or component dimensions.
+        setSize(400, 320);                                                        // Sets the window or component dimensions.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);                           // Sets what happens when the user closes this window.
         setLocationRelativeTo(null);                                              // Positions the window relative to the specified component or screen.
 
-        JPanel panel = new JPanel(new GridLayout(4, 2, 10, 10));                  // Creates a panel to group and arrange GUI components.
-        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));         // Sets the border or padding around the component.
+        // Main panel with border layout to center the form.
+        JPanel mainPanel = new JPanel(new BorderLayout(10, 10));                  // Creates a panel to group and arrange GUI components.
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));     // Sets padding around the panel.
+
+        // Form panel: labels on the left, text fields on the right.
+        JPanel formPanel = new JPanel(new GridLayout(2, 2, 10, 15));              // Creates a panel for username/password rows.
+        formPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));        // Adds bottom spacing before buttons.
 
         usernameField = new JTextField();                                         // Creates a text input field for user-entered text.
         passwordField = new JPasswordField();                                     // Creates a password input field that masks typed characters.
 
+        formPanel.add(new JLabel("Username:"));                                   // Creates a label to display text in the GUI.
+        formPanel.add(usernameField);                                             // Adds this component to its parent container or panel.
+        formPanel.add(new JLabel("Password:"));                                   // Creates a label to display text in the GUI.
+        formPanel.add(passwordField);                                             // Adds this component to its parent container or panel.
+
+        mainPanel.add(formPanel, BorderLayout.CENTER);                            // Adds the form to the center of the main panel.
+
+        // Button panel: full-width Login and Register buttons.
+        JPanel buttonPanel = new JPanel(new GridLayout(2, 1, 0, 10));             // Stacks buttons vertically, full width.
+
         JButton loginButton = new JButton("Login");                               // Creates a button labeled 'Login'.
         JButton registerButton = new JButton("Register");                         // Creates a button labeled 'Register'.
 
-        panel.add(new JLabel("Username:"));                                       // Creates a label to display text in the GUI.
-        panel.add(usernameField);                                                 // Adds this component to its parent container or panel.
-        panel.add(new JLabel("Password:"));                                       // Creates a label to display text in the GUI.
-        panel.add(passwordField);                                                 // Adds this component to its parent container or panel.
-        panel.add(new JLabel(""));                                                // Creates a label to display text in the GUI.
-        panel.add(loginButton);                                                   // Adds this component to its parent container or panel.
-        panel.add(new JLabel(""));                                                // Creates a label to display text in the GUI.
-        panel.add(registerButton);                                                // Adds this component to its parent container or panel.
+        loginButton.setPreferredSize(new Dimension(0, 40));                       // Sets a comfortable button height.
+        registerButton.setPreferredSize(new Dimension(0, 40));                    // Sets a comfortable button height.
 
-        add(panel);                                                               // Performs the operation described by this statement.
+        buttonPanel.add(loginButton);                                             // Adds login button to the panel.
+        buttonPanel.add(registerButton);                                          // Adds register button to the panel.
+
+        mainPanel.add(buttonPanel, BorderLayout.SOUTH);                           // Adds buttons to the bottom of the main panel.
+
+        add(mainPanel);                                                           // Adds the main panel to the window.
 
         loginButton.addActionListener(e -> loginAdmin());                         // Registers an event handler for user interaction.
         registerButton.addActionListener(e -> showAdminRegister());               // Registers an event handler for user interaction.
