@@ -1,3 +1,4 @@
+
 import java.awt.*; // Provides GUI layouts, fonts, colors, and other visual components.
 import java.security.MessageDigest; // Compares password hashes securely.
 import java.security.SecureRandom; // Generates random values for password hashing.
@@ -5,6 +6,7 @@ import java.sql.*; // Provides classes for MySQL database operations.
 import java.time.LocalDate; // Gets the current date.
 import java.util.Arrays; // Compares arrays and clears password data from memory.
 import java.util.Base64; // Converts binary data into Base64 strings.
+
 import javax.crypto.SecretKeyFactory; // Generates password hashes.
 import javax.crypto.spec.PBEKeySpec; // Supplies password hashing settings.
 import javax.swing.*; // Provides GUI components such as buttons, labels, and windows.

@@ -22,7 +22,7 @@ public class Reservation {
     }
 
     public Reservation(int reservationId, int bookId, int memberId,
-                       LocalDate reservationDate, String status, String adminNote) {
+        LocalDate reservationDate, String status, String adminNote) {
         this.reservationId = reservationId;
         this.bookId = bookId;
         this.memberId = memberId;
